@@ -26,6 +26,6 @@ html类名很长，且不够语义化，不便调试
 
 ```bash
 # 试试tailwind样式库
-https://github.com/htmlstreamofficial/preline
 https://github.com/saadeghi/daisyui
+https://github.com/htmlstreamofficial/preline
 ```
