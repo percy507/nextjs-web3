@@ -1,0 +1,68 @@
+{
+  "name": "nextjs-web3",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "prepare": "husky install .husky",
+    "preinstall": "npx only-allow pnpm",
+    "dev": "cross-env APP_ENV=local next dev -p 4000",
+    "lint": "next lint",
+    "type-check": "tsc",
+    "start:dev": "pnpm i && cross-env APP_ENV=dev next build && next start",
+    "start:test": "pnpm i && cross-env APP_ENV=test next build && PORT=4001 next start",
+    "start:prod": "pnpm i && cross-env APP_ENV=prod next build && PORT=4002 next start",
+    "site:dev": "cross-env PM2_ENV=dev pm2 start ./pm2.config.cjs",
+    "site:test": "cross-env PM2_ENV=test pm2 start ./pm2.config.cjs",
+    "site:prod": "cross-env PM2_ENV=prod pm2 start ./pm2.config.cjs",
+    "deploy:dev": "bash ./deploy.sh dev",
+    "deploy:test": "bash ./deploy.sh test",
+    "deploy:prod": "bash ./deploy.sh prod"
+  },
+  "engines": {
+    "node": ">=18",
+    "pnpm": ">=8"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{css,less}": [
+      "stylelint --fix",
+      "prettier --write"
+    ],
+    "*.{md,json}": "prettier --write"
+  },
+  "dependencies": {
+    "clsx": "^2.0.0",
+    "next": "14.0.3",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^16.2.1",
+    "@commitlint/config-conventional": "^16.2.1",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^10.0.1",
+    "cross-env": "^7.0.3",
+    "eslint": "8.34.0",
+    "eslint-config-next": "13.2.1",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.4",
+    "postcss": "^8",
+    "prettier": "^3.1.0",
+    "sass": "^1.49.9",
+    "stylelint": "^14.5.3",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-config-standard": "^25.0.0",
+    "stylelint-config-tailwindcss": "^0.0.7",
+    "stylelint-order": "^5.0.0",
+    "tailwindcss": "^3.3.0",
+    "typescript": "5.2.2"
+  }
+}
